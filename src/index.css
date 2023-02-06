@@ -1,13 +1,234 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ******************** Fluid Design ******************** */
+
+/* @link https://utopia.fyi/type/calculator?c=320,17,1.125,1920,20,1.333,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+  --step--2: clamp(0.7rem, calc(0.87rem + -0.14vw), 0.84rem);
+  --step--1: clamp(0.94rem, calc(0.95rem + -0.01vw), 0.94rem);
+  --step-0: clamp(1.06rem, calc(1.03rem + 0.19vw), 1.25rem);
+  --step-1: clamp(1.2rem, calc(1.1rem + 0.47vw), 1.67rem);
+  --step-2: clamp(1.35rem, calc(1.17rem + 0.88vw), 2.22rem);
+  --step-3: clamp(1.51rem, calc(1.22rem + 1.45vw), 2.96rem);
+  --step-4: clamp(1.7rem, calc(1.25rem + 2.25vw), 3.95rem);
+  --step-5: clamp(1.91rem, calc(1.25rem + 3.35vw), 5.26rem);
+  --step-6: clamp(2.15rem, calc(1.18rem + 4.86vw), 7.01rem);
+}
+/* ******************** Custom Properties ******************** */
+:root {
+  --bg-color: #222525;
+  --text-color: #e9ecec;
+  --text-alpha-color: #e9ecec8f;
+  --item-color: #8ca5a2;
+  --main-font: "Red Hat Display", sans-serif;
+  /*
+    MediaQueries
+
+      768px - 48em
+      992px - 62em
+      1200px - 75em
+  */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ******************** User Prefers ******************** */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--dark-color);
+    --text-color: var(--text-dark-color);
+    --link-color: var(--link-dark-color);
+    --border-color: var(--border-dark-color);
+  }
+}
+
+:root.dark {
+  --bg-color: var(--dark-color);
+  --text-color: var(--text-dark-color);
+  --link-color: var(--link-dark-color);
+  --border-color: var(--border-dark-color);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: var(--light-color);
+    --text-color: var(--text-light-color);
+    --link-color: var(--link-light-color);
+    --border-color: var(--border-light-color);
+  }
+}
+
+:root.light {
+  --bg-color: var(--light-color);
+  --text-color: var(--text-light-color);
+  --link-color: var(--link-light-color);
+  --border-color: var(--border-light-color);
+} */
+
+/* ******************** Reset CSS ******************** */
+
+html {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+  font-size: 16px;
+  font-family: var(--main-font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+
+a:hover {
+  opacity: 0.9;
+}
+
+b,
+strong,
+th {
+  font-weight: 500;
+}
+
+blockquote {
+  padding: 0.5rem 1.5rem;
+  opacity: 0.75;
+}
+
+blockquote p,
+figure {
+  margin: 0;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* https://codepen.io/TechnoBishop/pen/LEVPJw */
+iframe,
+video {
+  width: 100%;
+  height: calc((100vw - 4rem) * (9 / 16));
+  max-height: calc(800px * 9 / 16);
+  aspect-ratio: 16 / 9;
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+/* ******************** Responsive Tables ******************** */
+/* https://css-tricks.com/responsive-data-tables/ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background-color: var(--border-color);
+}
+
+th {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+td,
+th {
+  padding: 6px;
+  border: 1px solid var(--text-color);
+  text-align: left;
+}
+
+@media only screen and (min-width: 780px) {
+  table {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 779px),
+  (min-device-width: 768px) and (max-device-width: 992px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid var(--border-color);
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    overflow-wrap: break-word;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
+/* Site Styles */
+
+.date {
+  font-weight: 300;
+  font-size: var(--step--1);
+}
+.desc {
+  text-transform: capitalize;
 }

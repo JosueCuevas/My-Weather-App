@@ -1,25 +1,49 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "My Weather.app",
+  "short_name": "My Weather",
+  "description": "This is a web app developed for looking for the weather of any city around the world in a easily, simply, faster and great way! At the same time this software gives you additional information about the current weather status of your city",
+  "background_color": "linear-gradient(180deg, #1A6DFF 0%, #C822FF 100%)",
+  "theme_color": "#000",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./?utm_source=web_app_manifest",
+  "scope": "./",
+  "lang": "es-MX",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "./img/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "./img/32x32.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "32x32"
     },
     {
-      "src": "logo512.png",
+      "src": "./img/64x64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "./img/128x128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./img/256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./img/512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "./img/1024x1024.png",
+      "type": "image/png",
+      "sizes": "1024x204"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
